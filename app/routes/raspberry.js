@@ -2,34 +2,30 @@ const chalk = require("chalk");
 const exPress = require("express");
 const router = exPress.Router();
 const bodyParser = require("body-parser");
+const raspberryActions =  require("../controllers/raspberryActions.js");
+
 
 var jsonParser = bodyParser.json();
+const myRaspberry  = new raspberryActions(36);
+
 
 
 router.use(jsonParser);
 //REST API CRUD
-router.get("/raspberry", function (request, response) {
-        console.log(request);
-        response.json("Led On!");
-        // response.send("Hihi!");
-        console.log(chalk.red("Led On!"));
+
+
+router.get("/ledOn", function (request, response) {
+        response.json("ledOn!");
+        myRaspberry.ledOn();
+        console.log(chalk.yellow("Led turned on!"));
+
 });
 
-
-router.get("/home", function (request, response) {
-        console.log(request);
-        response.json("Welcome Home!");
-        console.log(chalk.red("Welcome Home!"));
+router.get("/ledOff",(req, res) => {
+		res.json("ledOff!");
+		myRaspberry.ledOff();
+		console.log(chalk.yellow("Led turned off!"));
 });
-
-router.post("/raspberry",(req, res) => {
-        res.send(req.body);
-
-        const { ledIntensity } = req.body;
-
-        console.log( ledIntensity );
-        console.log(req.body);
-})
 
 
 module.exports = router;
