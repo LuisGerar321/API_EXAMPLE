@@ -27,6 +27,10 @@ router.get("/ledOff",(req, res) => {
 		console.log(chalk.yellow("Led turned off!"));
 });
 
+router.get("/pinLed", (req, res) => {
+		res.json(myRaspberry.pinLed)
+});
+
 
 module.exports = router;
 
