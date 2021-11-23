@@ -3,7 +3,7 @@ const express = require("express");
 const myRouters = require("./routes/raspberry");
 
 const PORT = 3000;
-const URL = "http://localhost";
+const URL = "http://192.168.0.64";
 const app = express();
 
 
