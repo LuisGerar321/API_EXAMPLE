@@ -21,9 +21,15 @@ class RaspberryPi {
 
 	turnOnLedNtimes(n) {
 		for (let i = 0; i < n; i++) {
-			this.ledOn();
-			rpio.msleep(1000);
-			this.ledOff();
+
+			setTimeout(() =>{
+				this.ledOn();	
+			}, 1000);
+			
+			setTimeout(() =>{
+				this.ledOff();
+			}, 1000);
+			
 		};
 	}
 	get	pinLed() {
