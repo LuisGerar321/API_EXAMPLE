@@ -34,8 +34,10 @@ router.get("/pinLed", (req, res) => {
 //Create and Post Endpoint
 router.post("/ledOnNtimes", (request, response) => {
 	response.json("Led On N times");
+	const n = request.body.ledOn;
 	console.log(request.body);
 	//A complex code in RasberryPy: ledOnNtimes(n)//
+	myRaspberry.turnOnLedNtimes(n);
 	console.log(chalk.yellow("Led turned off!"));
 });
 
