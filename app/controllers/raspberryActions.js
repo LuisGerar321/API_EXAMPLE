@@ -10,10 +10,12 @@ class RaspberryPi {
 	};
 
 	ledOn(){
+		console.log("On.");
 		rpio.write(this.led, rpio.HIGH)
 	};
 
 	ledOff(){
+		console.log("Of.");
 		rpio.write(this.led, rpio.LOW)
 	};
 
