@@ -3,18 +3,17 @@ const express = require("express");
 const myRouters = require("./routes/raspberry");
 
 const PORT = 3000;
-const URL = "http://192.168.0.64";
+const URL = "http://localhost";
 const app = express();
 
 
 app.use(myRouters);
 
 app.get("/", (request, response) => {
-        response.json("Hello world")
+    response.json("Hello world")
 })
 
 
-app.listen( PORT,  () => {
-        console.log( chalk.green(`server running at: ${URL}:${PORT}/`));
+app.listen(PORT, () => {
+    console.log(chalk.green(`server running at: ${URL}:${PORT}/`));
 })
-
