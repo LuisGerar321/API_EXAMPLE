@@ -2,35 +2,36 @@ const rpio = require("rpio")
 
 
 class RaspberryPi {
-	constructor(led) {
-		this.led = led
-		//Initial commands//
-		rpio.open(this.led, rpio.OUTPUT);
-		rpio.write(this.led, rpio.LOW);
-	};
-	ledOn(){
-		rpio.write(this.led, rpio.HIGH)
-	};
-	ledOff(){
-		rpio.write(this.led, rpio.LOW)
-	};
+    constructor(led) {
+        this.led = led
+            //Initial commands//
+        rpio.open(this.led, rpio.OUTPUT);
+        rpio.write(this.led, rpio.LOW);
+    };
+    ledOn() {
+        rpio.write(this.led, rpio.HIGH)
+    };
+    ledOff() {
+        rpio.write(this.led, rpio.LOW)
+    };
+    ledOnNTimes(times) {
 
-	turn_OnLedNtimes(n){
-		for (let i = 1; i<= n; i++){ // We execute a for-loop with 'n' as a limit
-			this.ledOn(); // Turn the led on
-			rpio.msleep(1000); // Wait 1000ms
-			this.ledOff(); // Turn the led Off
-			rpio.msleep(1000); // Wait 1000ms
-		}; // Repeat until i=5
-	}
+        for (var i = 0; i < times; i++) {
+            //prende el led 1 segundo
+            rpio.write(16, rpio.HIGH);
+            rpio.sleep(1);
 
-	get	pinLed() {
-		return this.led;
-	};
-	set pinLed(led) {
-		this.led = led;
-	};
+            /* apaga el led 1 segundo */
+            rpio.write(16, rpio.LOW);
+            rpio.msleep(1000);
+        }
+    }
+    get pinLed() {
+        return this.led;
+    };
+    set pinLed(led) {
+        this.led = led;
+    };
 };
 
 module.exports = RaspberryPi;
-
