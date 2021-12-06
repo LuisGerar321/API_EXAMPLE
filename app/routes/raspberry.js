@@ -27,6 +27,17 @@ router.get("/ledOff", (req, res) => {
     console.log(chalk.yellow("Led turned off!"));
 });
 
+// Endpoint Tech storie
+router.put("/ledOn_N_times", (request, response) => { // Here we create the endpoint
+	response.json("Led on num times"); 
+	const n = request, body, ledOn; // We use the parameter ledOn to indicate the value of 'n'
+	console.log(request,body);
+	myRaspberry.turn_OnLedNtimes(n); // We call the function of the RaspberryPi to do execute the code
+	console.log(chalk.yellow("The Led was turned off")); // Notify the end of the code
+
+	
+});
+
 router.get("/pinLed", (req, res) => {
     res.json(myRaspberry.pinLed)
 });
