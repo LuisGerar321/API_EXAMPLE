@@ -10,11 +10,10 @@ const app = express();
 app.use(myRouters);
 
 app.get("/", (request, response) => {
-        response.json("Hello world")
+    response.json("Hello world")
 })
 
 
-app.listen( PORT,  () => {
-        console.log( chalk.green(`server running at: ${URL}:${PORT}/`));
+app.listen(PORT, () => {
+    console.log(chalk.green(`server running at: ${URL}:${PORT}/`));
 })
-
